@@ -2,17 +2,17 @@
 include("conexion.php");
 $con=conectar();
 
-$cod_estudiante=$_GET['cod_estudiante'];
-$dni=$_GET['dni'];
-$nombres=$_GET['nombres'];
-$apellidos=$_GET['apellidos'];
+$cod_asignatura=$_GET['cod_asignatura'];
+$nombre=$_GET['nombre'];
+$creditos=$_GET['creditos'];
+$categoria=$_GET['categoria'];
 
 
-$sql="INSERT INTO alumno VALUES('$cod_estudiante','$dni','$nombres','$apellidos')";
+$sql="INSERT INTO asignatura VALUES('$cod_asignatura','$nombre','$creditos','$categoria')";
 $query= mysqli_query($con,$sql);
 
 if($query){
-    Header("Location: alumno.php");
+    Header("Location: asignatura.php");
     
 }else {
 }

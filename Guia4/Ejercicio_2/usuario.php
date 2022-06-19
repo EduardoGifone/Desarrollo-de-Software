@@ -2,68 +2,65 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT *  FROM alumno";
+    $sql="SELECT * FROM usuario";
     $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> PAGINA ALUMNO</title>
+        <title> PAGINA USUARIO</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style_usuario.css">
     </head>
     <body>
-            <div class="container mt-5">
-                    <div class="row"> 
-                        
-                        <div class="col-md-3">
-                            <h1>Ingrese datos</h1>
-                                <form action="insertar.php" method="GET">
+        <div class="container">
+            <div class="container__form">
+                <form class="form" action="insertar.php" method="POST">
 
-                                    <input type="text" class="form-control mb-3" name="cod_estudiante" placeholder="cod estudiante">
-                                    <input type="text" class="form-control mb-3" name="dni" placeholder="Dni">
-                                    <input type="text" class="form-control mb-3" name="nombres" placeholder="Nombres">
-                                    <input type="text" class="form-control mb-3" name="apellidos" placeholder="Apellidos">
-                                    
-                                    <input type="submit" class="btn btn-primary">
-                                </form>
-                        </div>
+                    <h1 class="container__form__h1">INGRESE DATOS</h1>
 
-                        <div class="col-md-8">
-                            <table class="table" >
-                                <thead class="table-success table-striped" >
-                                    <tr>
-                                        <th>Codigo</th>
-                                        <th>Dni</th>
-                                        <th>Nombres</th>
-                                        <th>pellidos</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
+                    <label for="cod_usuario" class="container__form__label">Codigo</label>
+                    <input type="text" class="container__form__input" name="cod_usuario" placeholder="Ingrese codigo">
+                    <label for="password" class="container__form__label">Password</label>
+                    <input type="password" class="container__form__input" name="password" placeholder="Ingrese password">
+                    <label for="correo_electronico" class="container__form__label">Correo Electronico</label>
+                    <input type="text" class="container__form__input" name="correo_electronico" placeholder="Ingrese correo electronico">
+                    <label for="imagen" class="container__form__label">Imagen</label>
+                    <input type="file" class="container__form__input" name="imagen">
 
-                                <tbody>
-                                        <?php
-                                            while($row=mysqli_fetch_array($query)){
-                                        ?>
-                                            <tr>
-                                                <th><?php  echo $row['cod_estudiante']?></th>
-                                                <th><?php  echo $row['dni']?></th>
-                                                <th><?php  echo $row['nombres']?></th>
-                                                <th><?php  echo $row['apellidos']?></th>    
-                                                <th><a href="actualizar.php?id=<?php echo $row['cod_estudiante'] ?>" class="btn btn-info">Editar</a></th>
-                                                <th><a href="delete.php?id=<?php echo $row['cod_estudiante'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
-                                            </tr>
-                                        <?php 
-                                            }
-                                        ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>  
+                    <input type="submit" class="container__form__button">
+
+                </form>
             </div>
+            <div class="container__bd">
+
+                <div class="container__bd__row container__bd__row--head">
+                    <p class="container__bd__row__p">Codigo</p>
+                    <p class="container__bd__row__p">Password</p>
+                    <p class="container__bd__row__p">Correo Electronico</p>
+                    <p class="container__bd__row__p">Imagen</p>
+                </div>
+                
+                <div class="container__bd__row container__bd__row--body">
+                    <?php
+                        while($row=mysqli_fetch_array($query)){
+                    ?>
+                        <p class="container__bd__row__p"><?php  echo $row['cod_usuario']?></p>
+                        <p class="container__bd__row__p"><?php  echo $row['password']?></p>
+                        <p class="container__bd__row__p"><?php  echo $row['correo_electronico']?></p>
+                        <p class="container__bd__row__p"><?php  echo $row['imagen']?></p>
+                        <a href="actualizar.php?id=<?php echo $row['cod_usuario'] ?>" class="container__bd__row__a container__bd__row__a--Editar">Editar</a>
+                        <a href="delete.php?id=<?php echo $row['cod_usuario'] ?>" class="container__bd__row__a container__bd__row__a--Eliminar">Eliminar</a>
+                    <?php 
+                        }
+                    ?>
+                </div>
+            </div>
+
+        </div>            
     </body>
 </html>

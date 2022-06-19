@@ -2,7 +2,7 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT *  FROM asignatura";
+    $sql="SELECT * FROM asignatura";
     $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
@@ -11,10 +11,10 @@
         <title> PAGINA ASIGNATURA</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style_asignatura.css">
     </head>
     <body>
         <div class="container">
@@ -38,6 +38,27 @@
             </div>
             <div class="container__bd">
 
+                <div class="container__bd__row container__bd__row--head">
+                    <p class="container__bd__row__p">Codigo</p>
+                    <p class="container__bd__row__p">Nombre</p>
+                    <p class="container__bd__row__p">Creditos</p>
+                    <p class="container__bd__row__p">Categoria</p>
+                </div>
+                
+                <div class="container__bd__row container__bd__row--body">
+                    <?php
+                        while($row=mysqli_fetch_array($query)){
+                    ?>
+                        <p class="container__bd__row__p"><?php  echo $row['cod_asignatura']?></p>
+                        <p class="container__bd__row__p"><?php  echo $row['nombre']?></p>
+                        <p class="container__bd__row__p"><?php  echo $row['creditos']?></p>
+                        <p class="container__bd__row__p"><?php  echo $row['categoria']?></p>
+                        <a href="actualizar.php?id=<?php echo $row['cod_asignatura'] ?>" class="container__bd__row__a container__bd__row__a--Editar">Editar</a>
+                        <a href="delete.php?id=<?php echo $row['cod_asignatura'] ?>" class="container__bd__row__a container__bd__row__a--Eliminar">Eliminar</a>
+                    <?php 
+                        }
+                    ?>
+                </div>
             </div>
 
         </div>            

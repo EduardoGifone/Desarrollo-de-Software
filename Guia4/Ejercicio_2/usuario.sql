@@ -32,7 +32,7 @@ CREATE TABLE `usuario` (
   `cod_usuario` int NOT NULL,
   `password` varchar(12) NOT NULL,
   `correo_electronico` varchar(30) NOT NULL,
-  `imagen` longblob 
+  `imagen` varchar(10) 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

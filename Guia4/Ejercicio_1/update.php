@@ -3,15 +3,15 @@
 include("conexion.php");
 $con=conectar();
 
-$cod_estudiante=$_GET['cod_estudiante'];
-$dni=$_GET['dni'];
-$nombres=$_GET['nombres'];
-$apellidos=$_GET['apellidos'];
+$cod_asignatura=$_GET['cod_asignatura'];
+$nombre=$_GET['nombre'];
+$creditos=$_GET['creditos'];
+$categoria=$_GET['categoria'];
 
-$sql="UPDATE alumno SET  dni='$dni',nombres='$nombres',apellidos='$apellidos' WHERE cod_estudiante='$cod_estudiante'";
+$sql="UPDATE asignatura SET  nombre='$nombre',creditos='$creditos',categoria='$categoria' WHERE cod_asignatura='$cod_asignatura'";
 $query=mysqli_query($con,$sql);
 
     if($query){
-        Header("Location: alumno.php");
+        Header("Location: asignatura.php");
     }
 ?>

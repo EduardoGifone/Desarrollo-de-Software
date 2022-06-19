@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+body {
+    background: #55C3B8;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    background-color: #253244;
+    padding: 50px;
+    border-radius: 7px;
+    box-shadow: 5px 5px 15px #0008;
+}
+
+.form__label {
+    color: #fff;
+    font-size: 1.125rem;
+}
+
+.form__input {
+    width: 100%;
+    height: 25px;
+    color: #fff;
+    background-color: transparent;
+    border-style: solid;
+    border-width: .5px;
+    border-color: #fff5;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 10px;
+}
+
+.form__input__button {
+    background-color: #55C3B8;
+    padding: 7px 12px;
+    margin-top: 10px;
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 1.0625rem;
+    box-shadow: 5px 5px 15px #0008;
+}

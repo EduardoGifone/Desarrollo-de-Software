@@ -4,7 +4,7 @@
 
 $id=$_GET['id'];
 
-$sql="SELECT * FROM alumno WHERE cod_estudiante='$id'";
+$sql="SELECT * FROM usuario WHERE cod_usuario='$id'";
 $query=mysqli_query($con,$sql);
 
 $row=mysqli_fetch_array($query);
@@ -16,24 +16,24 @@ $row=mysqli_fetch_array($query);
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
         <title>Actualizar</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        
+        <link rel="stylesheet" href="style_actualizar.css">
     </head>
     <body>
-                <div class="container mt-5">
-                    <form action="update.php" method="GET">
-                    
-                                <input type="hidden" name="cod_estudiante" value="<?php echo $row['cod_estudiante']  ?>">
-                                
-                                <input type="text" class="form-control mb-3" name="dni" placeholder="Dni" value="<?php echo $row['dni']  ?>">
-                                <input type="text" class="form-control mb-3" name="nombres" placeholder="Nombres" value="<?php echo $row['nombres']  ?>">
-                                <input type="text" class="form-control mb-3" name="apellidos" placeholder="Apellidos" value="<?php echo $row['apellidos']  ?>">
-                                
-                            <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
-                    </form>
-                    
-                </div>
+        <div class="container">
+            <form class="form" action="update.php" method="POST" enctype="multipart/form-data">
+
+                        <input type="hidden" class="form__input" name="cod_usuario" value="<?php echo $row['cod_usuario']  ?>">
+                        <label for="password" class="form__label">Password</label>
+                        <input type="text" class="form__input" name="password" placeholder="Ingrese password" value="<?php echo $row['password']  ?>">
+                        <label for="correo_electronico" class="form__label">Correo Electronico</label>
+                        <input type="text" class="form__input" name="correo_electronico" placeholder="Ingrese Correo Electronico" value="<?php echo $row['correo_electronico']  ?>">
+                        <label for="imagen" class="form__label">Imagen</label>
+                        <input type="file" class="form__input" name="imagen" value="<?php echo $row['imagen']  ?>">
+
+                    <input type="submit" class="form__input__button" value="Actualizar">
+            </form>
+
+        </div>
     </body>
 </html>

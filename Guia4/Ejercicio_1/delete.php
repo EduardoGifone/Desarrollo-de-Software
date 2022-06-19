@@ -3,12 +3,12 @@
 include("conexion.php");
 $con=conectar();
 
-$cod_estudiante=$_GET['id'];
+$cod_asignatura=$_GET['id'];
 
-$sql="DELETE FROM alumno  WHERE cod_estudiante='$cod_estudiante'";
+$sql="DELETE FROM asignatura  WHERE cod_asignatura='$cod_asignatura'";
 $query=mysqli_query($con,$sql);
 
     if($query){
-        Header("Location: alumno.php");
+        Header("Location: asignatura.php");
     }
 ?>
